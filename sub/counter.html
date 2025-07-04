@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-K7SMH65S');</script>
+	<!-- End Google Tag Manager -->
+
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Counter</title>
+
+	<style>
+		/* register counter as an integer */
+		@property --percent {
+			syntax: "<integer>";
+			initial-value: 0;
+			inherits: false;
+		}
+
+		.percent-counter {
+			--steps: var(--target);
+
+			font-family: monospace;
+			font-variant: tabular-nums;
+			font-size: 3rem;
+			/*border: 1px solid #333;*/
+			border-radius: 7px;
+			padding: 1rem;
+			width: 140px;
+			aspect-ratio: 1;
+			display: grid;
+			place-content: center;
+			/*background-color: steelblue;*/
+			color: #333;
+			box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.35),
+				10px 10px 15px rgba(70, 70, 70, 0.12);
+		}
+
+		.percent-counter::after {
+			content: counter(percent) "%";
+			counter-reset: percent var(--percent);
+			animation: count-up var(--duration) steps(var(--steps, 100)) forwards;
+		}
+
+		@keyframes count-up {
+			to {
+				--percent: var(--target, 100);
+			}
+		}
+
+		body {
+			min-height: 100svh;
+			display: grid;
+			place-content: center;
+			background-color: #aeaeae;
+		}
+	</style>
+
+
+</head>
+
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7SMH65S" height="0" width="0"
+			style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<div class="percent-counter" style="--target:75;--duration:10s"></div>
+
+	<br>
+	<a href="../index.html">Back to home</a>
+</body>
+
+</html>
